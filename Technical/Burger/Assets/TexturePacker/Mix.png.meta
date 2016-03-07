@@ -1,0 +1,672 @@
+fileFormatVersion: 2
+guid: cf3e1d2d72dc9ce45abebe1225c71a46
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: +coin
+    21300002: Down
+    21300004: Text
+    21300006: add
+    21300008: addtime
+    21300010: banhchung
+    21300012: bgready
+    21300014: chelambanh
+    21300016: chuoi_menu
+    21300018: coinMonkey
+    21300020: colen
+    21300022: daudo_menu
+    21300024: dauxanh_menu
+    21300026: fb
+    21300028: ghenha
+    21300030: hangmoinek
+    21300032: home
+    21300034: khay
+    21300036: lainha
+    21300038: lambanh
+    21300040: leaderboard
+    21300042: like
+    21300044: look
+    21300046: monkey
+    21300048: monkey1
+    21300050: mussic
+    21300052: nene
+    21300054: nenlevel
+    21300056: nenmang
+    21300058: nensang
+    21300060: nentoi
+    21300062: nepcom_menu
+    21300064: nepdo_menu
+    21300066: nepxanh_menu
+    21300068: net
+    21300070: ngan
+    21300072: o
+    21300074: order
+    21300076: pause
+    21300078: relay
+    21300080: resumne
+    21300082: star1
+    21300084: star2
+    21300086: thanhchaytime
+    21300088: thitheo_menu
+    21300090: tieptuc
+    21300092: time1
+    21300094: time2
+    21300096: time3
+    21300098: timeChay
+    21300100: timenen
+    21300102: traitime
+    21300104: trungmuoi_menu
+    21300106: volumen
+    21300108: 5Sao
+    21300110: monkey3
+    21300112: BG_Start
+    21300114: ban
+    21300116: bg play
+    21300118: nen
+    21300120: panel
+    21300122: 1
+    21300124: 10
+    21300126: 2
+    21300128: 3
+    21300130: 4
+    21300132: 5
+    21300134: 6
+    21300136: 7
+    21300138: 8
+    21300140: 9
+    21300142: Icon
+    21300144: monkey2
+    21300146: time
+    21300148: gold
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: +coin
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 695
+        width: 269
+        height: 115
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 5Sao
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 676
+        width: 261
+        height: 134
+      alignment: 9
+      pivot: {x: .375478923, y: 1.79104483}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 607
+        width: 68
+        height: 83
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Text
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 95
+        width: 470
+        height: 184
+      alignment: 9
+      pivot: {x: .514893591, y: .445652187}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: add
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 575
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: addtime
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 281
+        width: 178
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: banhchung
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 39
+        width: 362
+        height: 239
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bgready
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 48
+        width: 319
+        height: 230
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: chuoi_menu
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 620
+        width: 104
+        height: 73
+      alignment: 9
+      pivot: {x: .490384609, y: .493150681}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: coinMonkey
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 687
+        width: 70
+        height: 69
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daudo_menu
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 491
+        width: 101
+        height: 64
+      alignment: 9
+      pivot: {x: .495049506, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dauxanh_menu
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 346
+        width: 105
+        height: 77
+      alignment: 9
+      pivot: {x: .495238096, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: fb
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 907
+        width: 115
+        height: 115
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ghenha
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 283
+        width: 272
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gold
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 24
+        width: 248
+        height: 69
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hangmoinek
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 137
+        width: 328
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: home
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 389
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: khay
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 813
+        width: 960
+        height: 209
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: lainha
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 319
+        width: 250
+        height: 68
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: lambanh
+      rect:
+        serializedVersion: 2
+        x: 1402
+        y: 257
+        width: 310
+        height: 60
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: leaderboard
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 790
+        width: 115
+        height: 115
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: like
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 673
+        width: 115
+        height: 115
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monkey
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 280
+        width: 521
+        height: 742
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monkey2
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 287
+        width: 250
+        height: 387
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monkey3
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 512
+        width: 40
+        height: 61
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mussic
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 636
+        width: 60
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nene
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 341
+        width: 380
+        height: 299
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nenlevel
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 393
+        width: 380
+        height: 418
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nenmang
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 758
+        width: 147
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nensang
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 8
+        width: 227
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nentoi
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 8
+        width: 227
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nepcom_menu
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 557
+        width: 103
+        height: 61
+      alignment: 9
+      pivot: {x: .504854381, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nepdo_menu
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 425
+        width: 106
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nepxanh_menu
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 490
+        width: 106
+        height: 64
+      alignment: 9
+      pivot: {x: .5, y: .5078125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: net
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 556
+        width: 115
+        height: 115
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ngan
+      rect:
+        serializedVersion: 2
+        x: 2027
+        y: 821
+        width: 11
+        height: 201
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: o
+      rect:
+        serializedVersion: 2
+        x: 1910
+        y: 812
+        width: 112
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: order
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 642
+        width: 257
+        height: 380
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pause
+      rect:
+        serializedVersion: 2
+        x: 1990
+        y: 580
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: relay
+      rect:
+        serializedVersion: 2
+        x: 1910
+        y: 907
+        width: 115
+        height: 115
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: resumne
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 551
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: star1
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 4
+        width: 94
+        height: 89
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: star2
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 4
+        width: 94
+        height: 89
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: thanhchaytime
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 4
+        width: 248
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: thitheo_menu
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 692
+        width: 99
+        height: 64
+      alignment: 9
+      pivot: {x: .49494949, y: .4921875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tieptuc
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 203
+        width: 241
+        height: 82
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: time
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 15
+        width: 236
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: time1
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 24
+        width: 79
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: time2
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 24
+        width: 78
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: time3
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 24
+        width: 78
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: timeChay
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 680
+        width: 22
+        height: 342
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: timenen
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 286
+        width: 33
+        height: 354
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: traitime
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 629
+        width: 51
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: trungmuoi_menu
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 282
+        width: 98
+        height: 57
+      alignment: 9
+      pivot: {x: .489795923, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volumen
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 580
+        width: 56
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
