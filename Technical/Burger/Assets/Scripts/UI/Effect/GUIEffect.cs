@@ -65,7 +65,7 @@ public class GUIEffect : MonoSingleton<GUIEffect>
     }
     //Reset Order ve vi tri cu
     [ContextMenu("Reset")]
-    void Reset()
+    void  Reset()
     {
         InfoDotween order = GetInItem(InfoDotween.TYPE.ORDER);
         order.transf.localPosition = order.posIn;
@@ -80,7 +80,7 @@ public class GUIEffect : MonoSingleton<GUIEffect>
         //InfoDotween itemFruit = GetInItem(InfoDotween.TYPE.DISH_FRUIT);
         //itemFruit.transf.localScale = new Vector3(0.0f, 0.0f, 0.0f);
         //FruitManager.Instance.HideFruit(); TODO: Clear drink
-        DrinkManager.Instance.HideDrink();
+        DrinkManager.Instance.HideDrinkPlayer();
         Order();
         
     }
@@ -150,7 +150,18 @@ public class GUIEffect : MonoSingleton<GUIEffect>
             .Ease(EaseType.EaseInOutBack)
             );
     }
-    
+
+    public void AddDrink()
+    {
+        InfoDotween item = GetInItem(InfoDotween.TYPE.DISH_FRUIT);
+
+        item.transf.localScale = item.scaleIn;// new Vector3(0.3f, 0.55f, 0.0f);
+        HOTween.To(item.transf, 0.15f, new TweenParms()
+            .Prop("localScale", item.scaleOut, false)
+            .Ease(EaseType.EaseInOutBack)
+            );
+    }
+
     //Hien cai Dia cua Burger
     void ShowDishBurger()
     {
@@ -248,6 +259,13 @@ public class GUIEffect : MonoSingleton<GUIEffect>
             );
 
     }
+
+    public void Replay()
+    {
+        GameController.Instance.CurrentLevel--;
+        FinishLevelComplete();
+    }
+
     [ContextMenu("Finish Level Complete")]
     public void FinishLevelComplete()
     {
@@ -289,23 +307,31 @@ public class GUIEffect : MonoSingleton<GUIEffect>
             itemGetFree.transf.localScale = itemGetFree.scaleIn;
 
             ResetPosStar();
-            LevelInfo levelCurrent = GameData.Instance.listLevel[GameController.Instance.CurrentLevel -1];
-            LevelInfo levelNext = GameData.Instance.listLevel[GameController.Instance.CurrentLevel];
-            if (levelNext.maxUnlockCake > levelCurrent.maxUnlockCake || levelNext.maxUnlockFruit > levelCurrent.maxUnlockFruit)
+            if (GameController.Instance.CurrentLevel > 0)
             {
-                GUIController.Instance.btNewItem();
-                if (levelNext.maxUnlockCake > levelCurrent.maxUnlockCake)
+                LevelInfo levelCurrent = GameData.Instance.listLevel[GameController.Instance.CurrentLevel - 1];
+                LevelInfo levelNext = GameData.Instance.listLevel[GameController.Instance.CurrentLevel];
+                if (levelNext.maxUnlockCake > levelCurrent.maxUnlockCake || levelNext.maxUnlockFruit > levelCurrent.maxUnlockFruit)
                 {
-                    GUINewItem.Instance.SetImageNewItem(levelNext.maxUnlockCake, true);
+                    GUIController.Instance.btNewItem();
+                    if (levelNext.maxUnlockCake > levelCurrent.maxUnlockCake)
+                    {
+                        GUINewItem.Instance.SetImageNewItem(levelNext.maxUnlockCake, true);
+                    }
+                    if (levelNext.maxUnlockFruit > levelCurrent.maxUnlockFruit)
+                    {
+                        GUINewItem.Instance.SetImageNewItem(levelNext.maxUnlockFruit, false);
+                    }
                 }
-                if (levelNext.maxUnlockFruit > levelCurrent.maxUnlockFruit)
+                else
                 {
-                    GUINewItem.Instance.SetImageNewItem(levelNext.maxUnlockFruit, false);
+                    guiController.btJoinGamePlay();
                 }
             }
             else
             {
-                guiController.btJoinGamePlay();
+                    guiController.btJoinGamePlay();
+
             }
         }
     }

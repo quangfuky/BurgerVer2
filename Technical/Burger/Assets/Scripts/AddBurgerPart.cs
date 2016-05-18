@@ -52,7 +52,7 @@ public class AddBurgerPart : MonoBehaviour, IPointerDownHandler
             //GUIEffect.Instance.AddItem(go, new Vector3(1f, 1f, 1f), 0.2f);
             GUIEffect.Instance.AddItem();
             sr.sortingOrder = cakeManager.PlayerBurgerLayer++;
-            //GUIArrow.Instance.ChangePosition();
+            GUIArrow.Instance.ChangePosition();
         }
     }
 }

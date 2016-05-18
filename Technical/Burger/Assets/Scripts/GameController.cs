@@ -16,6 +16,12 @@ public class GameController : MonoBehaviour
     public List<int> TimeList = new List<int>();
     public List<int> ScoreList = new List<int>();
     public List<int> MinScore = new List<int>();
+
+    public List<int> DrinkNumber = new List<int>(); 
+    public List<int> DrinkScore = new List<int>(); 
+    public List<int> DrinkMin = new List<int>();
+    public List<int> DrinkTime = new List<int>(); 
+
     public int PrePieceNum = 0;
     private int score = 0;
 
@@ -25,6 +31,7 @@ public class GameController : MonoBehaviour
     public Image OneStar;
     public Image TwoStar;
     public Image ThreeStar;
+    public Image ProgressBar;
 
     public GameObject OneGold;
     public GameObject TwoGold;
@@ -69,6 +76,7 @@ public class GameController : MonoBehaviour
         OneStar.fillAmount = 0;
         TwoStar.fillAmount = 0;
         ThreeStar.fillAmount = 0;
+        ProgressBar.fillAmount = 0;
         OneGold.SetActive(false);
         TwoGold.SetActive(false);
         ThreeGold.SetActive(false);
@@ -77,25 +85,28 @@ public class GameController : MonoBehaviour
         Three = false;
         life.transform.localPosition = new Vector3(0,0,0);
         life.SetActive(false);
+        RandomFruit = false;
+
     }
 
     public void StartGame()
     {
+        OrganizeStar.Instance.CalStarPosition();
         Clock.Instance.Time = GameData.Instance.listLevel[CurrentLevel].timeGame;
         Clock.Instance.CountTime = GameData.Instance.listLevel[CurrentLevel].timeGame;
         CakeManager.Instance.GenerateBurger();
         int i = Random.Range(1, 100);
-        if (GameData.Instance.listLevel[CurrentLevel].maxUnlockFruit != 0)
-        {
-            if (i % 3 == 0)
-            {
-                RandomFruit = true;
-            }
-            else
-            {
-                RandomFruit = false;
-            }
-        }
+        //if (GameData.Instance.listLevel[CurrentLevel].maxUnlockFruit != 0)
+        //{
+        //    if (i % 3 == 0)
+        //    {
+        //        RandomFruit = true;
+        //    }
+        //    else
+        //    {
+        //        RandomFruit = false;
+        //    }
+        //}
         //FruitManager.Instance.RandomFruit();
         ButtonManager.Instance.LoadButton();
         Clock.Instance.IsCounting = true;
@@ -194,12 +205,14 @@ public class GameController : MonoBehaviour
         {
             score = MinScore[PieceList.IndexOf(PrePieceNum + 2)];
         }
-
+        int score2 = 0;
         if (RandomFruit == true)
         {
-            int score2;
-            int temp2 = 19;
-            int bonus2 = ((int)Clock.Instance.CountCakeTime - 7);
+            int a = DrinkManager.Instance.NumberDrink;
+            Debug.Log("a: " +a);
+            int temp2 = DrinkScore[DrinkNumber.IndexOf(a)];
+            int bonus2 = ((int) Clock.Instance.CountCakeTime - DrinkTime[a]);
+
             if (bonus2 > 0)
             {
                 score2 = temp2 - bonus2;
@@ -208,9 +221,14 @@ public class GameController : MonoBehaviour
             {
                 score2 = temp2;
             }
-            score += score2;
-        }
 
+            if (score2 < DrinkMin[DrinkNumber.IndexOf(a)])
+            {
+                score2 = DrinkMin[DrinkNumber.IndexOf(a)];
+            }
+        }
+        Debug.Log("Score2: "+ score2);
+        score += score2;
         GameObject obj = PoolObject.Instance.SpawnObject("Number", number, new Vector3(-3, 1, 0));
         EffectShowScore showScore = obj.GetComponent<EffectShowScore>();
         showScore.Init(score);
@@ -233,11 +251,7 @@ public class GameController : MonoBehaviour
             if (Three == false)
             {
                 Three = true;
-                //ParticleController.Instance.RenderParticle(TypeParticle.PHAO_BONG_1, "Particle", ThreeGold.transform.position);
             }
-            ThreeStar.fillAmount = 1;
-            TwoStar.fillAmount = 1;
-            OneStar.fillAmount = 1;
         }
         else if (_burgerScore >= twoStar)
         {
@@ -247,10 +261,7 @@ public class GameController : MonoBehaviour
             if (Two == false)
             {
                 Two = true;
-                //ParticleController.Instance.RenderParticle(TypeParticle.PHAO_BONG_1, "Particle", TwoGold.transform.position);
             }
-            TwoStar.fillAmount = 1;
-            ThreeStar.fillAmount = (_burgerScore - twoStar) / ((float)threeStar - twoStar);
         }
         else if (_burgerScore >= oneStar)
         {
@@ -258,14 +269,14 @@ public class GameController : MonoBehaviour
             if (One == false)
             {
                 One = true;
-                //ParticleController.Instance.RenderParticle(TypeParticle.PHAO_BONG_1, "Particle", OneGold.transform.position);
             }
-            OneStar.fillAmount = 1;
-            TwoStar.fillAmount = (_burgerScore - oneStar) / ((float)twoStar - oneStar);
         }
-        else
-        {
-            OneStar.fillAmount = _burgerScore / (float)oneStar;
-        }
+        ProgressBar.fillAmount = _burgerScore/(float) threeStar;
+    }
+
+    public void NextLV()
+    {
+        _burgerScore = 300;
+        Clock.Instance.CountTime = 0.25f;
     }
 }

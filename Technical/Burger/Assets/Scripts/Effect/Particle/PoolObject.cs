@@ -2,6 +2,7 @@
 using System.Collections;
 using PathologicalGames;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PoolObject : MonoSingleton<PoolObject>
 {
@@ -38,5 +39,28 @@ public class PoolObject : MonoSingleton<PoolObject>
     {
         SpawnPool objectPool = PoolManager.Pools[name];
         objectPool.Despawn(transf);
+    }
+
+    public GameObject SpawnCake(string name, GameObject prefabs, GameObject parents, Sprite image)
+    {
+        SpawnPool objectPool = PoolManager.Pools[name];
+        Transform newObj = objectPool.Spawn(prefabs, parents.transform);
+        newObj.GetComponent<Image>().sprite = image;
+        newObj.transform.localScale = new Vector3(1,1,1);
+        return newObj.gameObject;
+    }
+
+    public void DespawAllCake(string name, GameObject prefabs)
+    {
+        SpawnPool objectPool = PoolManager.Pools[name];
+        
+        //objectPool.Despawn(prefabs.transform);
+        objectPool.DespawnAll();
+    }
+
+    public void DespawnAllDrink()
+    {
+        SpawnPool objectPool = PoolManager.Pools["Drink"];
+        objectPool.DespawnAll();
     }
 }

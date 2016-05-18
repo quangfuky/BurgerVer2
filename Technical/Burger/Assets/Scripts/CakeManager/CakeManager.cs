@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 /// <summary>
 /// Quan ly texture va ID
@@ -21,6 +22,10 @@ public class CakeManager : MonoBehaviour
     public List<int> Burger;
     public List<int> PlayerBurger;
 
+    public GameObject CakeParents;
+    public GameObject CakePrefabs;
+    public GameObject container;
+
     private bool _burgerlock = false;
     public int PlayerBurgerLayer;
     // Use this for initialization
@@ -38,7 +43,7 @@ public class CakeManager : MonoBehaviour
             {
                 _burgerlock = true;
                 GameController.Instance.CalculateScore();
-                TextManager.Instance.SetTextType(TypeText.GOLD ,GameController.Instance.GetBurgerScore().ToString());
+                TextManager.Instance.SetTextType(TypeText.GOLD, GameController.Instance.GetBurgerScore().ToString());
 
                 //StartCoroutine(NewBurger(true));
                 GUIEffect.Instance.CompleteOrder();
@@ -55,6 +60,11 @@ public class CakeManager : MonoBehaviour
     [ContextMenu("Generate Burger")]
     public void GenerateBurger()
     {
+        foreach (Transform cake in CakeParents.transform)
+        {
+            cake.parent = container.transform;
+        }
+        PoolObject.Instance.DespawAllCake("Cake", CakePrefabs);
         //GUIArrow.Instance.ChangePosition();
         PlayerBurgerLayer = 1;
         int level = GameController.Instance.CurrentLevel;
@@ -85,30 +95,44 @@ public class CakeManager : MonoBehaviour
         else
         {
             Burger.Add(102);
-        } 
+        }
         DisplayGeneratedBurger();
     }
 
     public void DisplayGeneratedBurger()
     {
         int index = 1;
-
-        foreach (int burg_ing in Burger)
+        List<GameObject> b = new List<GameObject>();
+        for (int i = Burger.Count - 1; i >= 0; i--)
         {
+            int burg_ing = Burger[i];
             var texture = GetTexture(burg_ing);
-            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            GameObject go = new GameObject(burg_ing.ToString());
-            SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
-            sr.sprite = sprite;
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f));
+            GameObject a = PoolObject.Instance.SpawnCake("Cake", CakePrefabs, container, sprite);
+            a.name = i.ToString();
 
-            // TODO: make sure layering of toppings looks correct
-            go.transform.parent = BurgerObj.transform;
-            go.transform.localPosition = new Vector3(0f, index * 0.3f - 0.9f, 0f);
-            sr.sortingOrder = index + 4;
-            go.transform.localScale = new Vector3(0.3f, 0.3f, 1f);
-            
-            index++;
+            b.Add(a);
+            //GameObject a = Instantiate(CakePrefabs);
+            //a.transform.parent = CakeParents.transform;
+            //GameObject go = new GameObject(burg_ing.ToString());
+            //SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+            //sr.sprite = sprite;
+
+            //// TODO: make sure layering of toppings looks correct
+            //go.transform.parent = BurgerObj.transform;
+            //go.transform.localPosition = new Vector3(0f, index * 0.3f - 0.9f, 0f);
+            //sr.sortingOrder = index + 4;
+            //go.transform.localScale = new Vector3(0.3f, 0.3f, 1f);
+
+            //index++;
         }
+        foreach (var o in b)
+        {
+            o.transform.parent = CakeParents.transform;
+            o.transform.localScale = new Vector3(1, 1, 1);
+        }
+        //GUIArrow.Instance.ChangePosition();
     }
 
     public Texture2D GetTexture(int ID)
@@ -161,16 +185,20 @@ public class CakeManager : MonoBehaviour
         if (GameData.Instance.listLevel[GameController.Instance.CurrentLevel].maxUnlockFruit != 0)
         {
             int i = Random.Range(1, 100);
-            if (i % 3 == 0)
+            if (i > 70)
             {
                 GameController.Instance.RandomFruit = true;
             }
             else
             {
                 GameController.Instance.RandomFruit = false;
+                DrinkManager.Instance.Clear = true;
             }
+            //GameController.Instance.RandomFruit = true;
+            Debug.Log("Random: " + GameController.Instance.RandomFruit);
             DrinkManager.Instance.RandomDrink();
         }
+
         _burgerlock = false;
     }
 

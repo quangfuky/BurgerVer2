@@ -7,6 +7,7 @@ public class Drink
 {
     public Sprite sprite;
     public int ID;
+    public bool check = false;
 }
 
 
@@ -14,9 +15,13 @@ public class DrinkManager : MonoSingleton<DrinkManager>
 {
     public List<GameObject> ListPosOrder;
     public List<GameObject> PlayerDrink;
-    public List<Drink> ListOrder; 
+    public List<Drink> ListOrder;
     public List<Drink> ListDrinks;
     public GameController controller;
+
+    public GameObject DrinkParents;
+    public GameObject DrinkPrefabs;
+    public int NumberDrink;
 
     public bool Clear;
     public int Corrected;
@@ -35,6 +40,10 @@ public class DrinkManager : MonoSingleton<DrinkManager>
         {
             drink.GetComponent<SpriteRenderer>().sprite = null;
         }
+        foreach (var listDrink in ListDrinks)
+        {
+            listDrink.check = false;
+        }
         ListOrder.Clear();
         Clear = true;
         Corrected = 0;
@@ -50,27 +59,43 @@ public class DrinkManager : MonoSingleton<DrinkManager>
     {
         if (GameData.Instance.listLevel[controller.CurrentLevel].maxUnlockFruit != 0 && controller.RandomFruit == true)
         {
+            DrinkParents.SetActive(true);
             Clear = false;
             ListOrder.Clear(); // Clear List Order trc khi tao moi
-            int a = Random.Range(1, GameData.Instance.listLevel[controller.CurrentLevel].maxPieceFruit -1); //
-            for (int i = 0; i < a; i++)
+            NumberDrink = Random.Range(1, GameData.Instance.listLevel[controller.CurrentLevel].maxPieceFruit + 1); //
+            for (int i = 0; i < NumberDrink; i++)
             {
-                int randomDrink = Random.Range(1, ListDrinks.Count);
+                int randomDrink;
+                do
+                {
+                    randomDrink = Random.Range(0, GameData.Instance.listLevel[controller.CurrentLevel].maxUnlockFruit);
+                } while (ListOrder.Contains(ListDrinks[randomDrink]));
                 ListOrder.Add(ListDrinks[randomDrink]);
             }
         }
-        ShowDrink();
+        else
+        {
+            DrinkParents.SetActive(false);
+        }
+        ShowDrinkOrder();
     }
 
-    public void ShowDrink()
+    public void ShowDrinkOrder()
     {
+        foreach (var o in ListPosOrder)
+        {
+            o.GetComponent<SpriteRenderer>().sprite = null;
+        }
+        PoolObject.Instance.DespawnAllDrink();
         for (int i = 0; i < ListOrder.Count; i++)
         {
-            ListPosOrder[i].GetComponent<SpriteRenderer>().sprite = ListOrder[i].sprite;
+            //ListPosOrder[i].GetComponent<SpriteRenderer>().sprite = ListOrder[i].sprite;
+            PoolObject.Instance.SpawnCake("Drink", DrinkPrefabs, DrinkParents, ListOrder[i].sprite);
         }
+        Debug.Log("SHow order");
     }
 
-    public void HideDrink()
+    public void HideDrinkPlayer()
     {
         foreach (var o in PlayerDrink)
         {
@@ -82,7 +107,16 @@ public class DrinkManager : MonoSingleton<DrinkManager>
     {
         Corrected = 0;
         Clear = false;
-        PlayerDrink.Clear();
+        for (int index = 0; index < ListOrder.Count; index++)
+        {
+            var drink = ListOrder[index];
+            drink.check = false;
+            var drink2 = ListDrinks[index];
+            drink2.check = false;
+        }
+
+        HideDrinkPlayer();
+        ShowDrinkOrder();
     }
 
     public void CheckCorrect()

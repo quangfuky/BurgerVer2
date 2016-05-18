@@ -27,8 +27,16 @@ public class LiveManager : MonoSingleton<LiveManager>
         CurrentTime = CurrentTimeInSecond();
         double totalSecond = CurrentTime - LastTime;
         Wait -= (float)totalSecond % 240;
-        Wait = Wait < 0 ? 240 + Wait : Wait; 
-        Second = (int)totalSecond % 240;
+        if (Wait < 0)
+        {
+            Wait = 240 + Wait;
+            Live ++;
+        }
+        else
+        {
+            Wait = Wait;
+        }
+        Second = (int) totalSecond;
     }
 
     void Start()
@@ -75,10 +83,17 @@ public class LiveManager : MonoSingleton<LiveManager>
 
     public void CalculateLive()
     {
-        while (Live < MaxLive && Second > 240)
+        while (Second>240)
         {
-            Live++;
-            Second -= 240;
+            if (Live < MaxLive)
+            {
+                Live++;
+                Second -= 240;
+            }
+            else
+            {
+                Second = 0;
+            }
         }
         if (Wait <= 0)
         {

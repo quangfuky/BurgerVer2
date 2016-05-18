@@ -11,16 +11,20 @@ public class AddDrink : MonoBehaviour, IPointerDownHandler
     {
         if (DrinkManager.Instance.Clear == false)
         {
-            foreach (var drink in DrinkManager.Instance.ListOrder)
+            for (int index = 0; index < DrinkManager.Instance.ListOrder.Count; index++)
             {
-                if (BtnId == drink.ID)
+                var drink = DrinkManager.Instance.ListOrder[index];
+                if (BtnId == drink.ID && drink.check == false)
                 {
                     DrinkManager.Instance.PlayerDrink[DrinkManager.Instance.Corrected].GetComponent<SpriteRenderer>()
                         .sprite = drink.sprite;
+                    DrinkManager.Instance.ListOrder[index].check = true;
+                    DrinkManager.Instance.ListPosOrder[index].GetComponent<SpriteRenderer>().sprite = null;
                     DrinkManager.Instance.Corrected++;
                     DrinkManager.Instance.CheckCorrect();
                     AudioController.Instance.PlayAudioTick(TypeAudio.TICK);
                     Debug.Log("Correct");
+                    GUIEffect.Instance.AddDrink();
                     return;
                 }
             }
