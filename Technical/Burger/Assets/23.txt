@@ -1,0 +1,2 @@
+﻿luot-speed-missChance-chanceRandomDrink-score - Star
+1 - 0.2 - 10 - 30 - 337

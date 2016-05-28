@@ -70,7 +70,7 @@ public class CakeManager : MonoBehaviour
         int level = GameController.Instance.CurrentLevel;
         List<LevelInfo> listLevel = GameData.Instance.listLevel;
         int numParts = Random.Range(1, GameData.Instance.listLevel[GameController.Instance.CurrentLevel].maxPieceCake - 1);
-        Debug.Log(numParts);
+        //Debug.Log(numParts);
         GameController.Instance.PrePieceNum = numParts;
         int nhan = Random.Range(0, 2);
         if (nhan == 0)

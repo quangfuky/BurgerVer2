@@ -41,7 +41,7 @@ public class GameData : MonoSingleton<GameData> {
             {
 				T newObject = (T)a.CreateInstance(typeOfT.FullName);
 
-				Debug.Log("Line " + i + " = " + temp[i]);
+				//Debug.Log("Line " + i + " = " + temp[i]);
 				string[] context = temp[i].Split(new char[]{'\t'});
 				for(int j = 0; j < fieldInfo.Length; j++) 
                 {

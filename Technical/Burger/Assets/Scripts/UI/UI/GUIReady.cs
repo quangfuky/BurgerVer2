@@ -49,10 +49,12 @@ public class GUIReady : MonoBehaviour {
 
         guiController.StartReadyGo(false);
         GameController.Instance.StartGame();
+        //Debug.LogError("goi Order tu GUIReady");
         GUIEffect.Instance.Order();
     }
     public void SetGoldTarget(string gold)
     {
         txtGoldTarget.text = gold;
     }
+
 }

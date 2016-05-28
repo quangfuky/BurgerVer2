@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         int a;
-        if (int.TryParse(MadLevel.currentLevelName,out a))
+        if (int.TryParse(MadLevel.currentLevelName, out a))
         {
             CurrentLevel = a;
         }
@@ -55,6 +55,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
        // MyApplycation.Instance.analytics.LogEvent("GamePlay", "PlayGame", "", (int)Time.fixedTime);
+       //TestTool.Instance.SetLevel();
+        LiveManager.Instance.Live = 10;
     }
 
     public void ResetGame()
@@ -187,48 +189,66 @@ public class GameController : MonoBehaviour
 
     public void CalculateScore()
     {
-        //Debug.Log("pre" + PrePieceNum + 2);
-
-        int temp = ScoreList[PieceList.IndexOf(PrePieceNum + 2)];
-        int bonus = ((int)Clock.Instance.CountCakeTime - TimeList[PieceList.IndexOf(PrePieceNum + 2)]);
-
-        if (bonus > 0)
+        if (!RandomFruit)
         {
-            score = temp - bonus;
-        }
-        else
-        {
-            score = temp;
-        }
+            int temp = ScoreList[PieceList.IndexOf(PrePieceNum + 2)];
+            int bonus = ((int)Clock.Instance.CountCakeTime - TimeList[PieceList.IndexOf(PrePieceNum + 2)]);
 
-        if (score < MinScore[PieceList.IndexOf(PrePieceNum + 2)])
-        {
-            score = MinScore[PieceList.IndexOf(PrePieceNum + 2)];
-        }
-        int score2 = 0;
-        if (RandomFruit == true)
-        {
-            int a = DrinkManager.Instance.NumberDrink;
-            Debug.Log("a: " +a);
-            int temp2 = DrinkScore[DrinkNumber.IndexOf(a)];
-            int bonus2 = ((int) Clock.Instance.CountCakeTime - DrinkTime[a]);
-
-            if (bonus2 > 0)
+            if (bonus > 0)
             {
-                score2 = temp2 - bonus2;
+                score = temp - bonus;
             }
             else
             {
-                score2 = temp2;
+                score = temp;
             }
 
-            if (score2 < DrinkMin[DrinkNumber.IndexOf(a)])
+            if (score < MinScore[PieceList.IndexOf(PrePieceNum + 2)])
             {
-                score2 = DrinkMin[DrinkNumber.IndexOf(a)];
+                score = MinScore[PieceList.IndexOf(PrePieceNum + 2)];
             }
         }
-        Debug.Log("Score2: "+ score2);
-        score += score2;
+        else
+        {
+            int a = DrinkManager.Instance.NumberDrink;
+            int maxScore = ScoreList[PieceList.IndexOf(PrePieceNum + 2)] + DrinkScore[DrinkNumber.IndexOf(a)];
+            int minScore = MinScore[PieceList.IndexOf(PrePieceNum + 2)] + DrinkMin[DrinkNumber.IndexOf(a)];
+            int time = TimeList[PieceList.IndexOf(PrePieceNum + 2)] + DrinkTime[DrinkNumber.IndexOf(a)];
+            if ((int) Clock.Instance.CountCakeTime < time)
+            {
+                score = maxScore;
+            }
+            else
+            {
+                int penalty = (int) Clock.Instance.CountCakeTime - time;
+                score = maxScore - penalty > minScore ? maxScore - penalty : minScore;
+            }
+        }
+
+        //int score2 = 0;
+        //if (RandomFruit == true)
+        //{
+        //    int a = DrinkManager.Instance.NumberDrink;
+        //    Debug.Log("a: " +a);
+        //    int temp2 = DrinkScore[DrinkNumber.IndexOf(a)];
+        //    int bonus2 = ((int) Clock.Instance.CountCakeTime - DrinkTime[a]);
+
+        //    if (bonus2 > 0)
+        //    {
+        //        score2 = temp2 - bonus2;
+        //    }
+        //    else
+        //    {
+        //        score2 = temp2;
+        //    }
+
+        //    if (score2 < DrinkMin[DrinkNumber.IndexOf(a)])
+        //    {
+        //        score2 = DrinkMin[DrinkNumber.IndexOf(a)];
+        //    }
+        //}
+        //Debug.Log("Score2: "+ score2);
+        //score += score2;
         GameObject obj = PoolObject.Instance.SpawnObject("Number", number, new Vector3(-3, 1, 0));
         EffectShowScore showScore = obj.GetComponent<EffectShowScore>();
         showScore.Init(score);

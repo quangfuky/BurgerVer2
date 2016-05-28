@@ -76,5 +76,9 @@ public class Clock : MonoSingleton<Clock>
         //Debug.Log("Chon worldmap");
         GUIController.Instance.btOnComplete();
         TextManager.Instance.SetTextType(TypeText.SCORE_COMPLETE, GameController.Instance._burgerScore.ToString());
+        // replay in tesst mode
+//#if UNITY_STANDALONE && UNITY_EDITOR
+        TestTool.Instance.Replay();
+//#endif
     }
 }

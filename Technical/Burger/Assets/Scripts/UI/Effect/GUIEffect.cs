@@ -81,8 +81,10 @@ public class GUIEffect : MonoSingleton<GUIEffect>
         //itemFruit.transf.localScale = new Vector3(0.0f, 0.0f, 0.0f);
         //FruitManager.Instance.HideFruit(); TODO: Clear drink
         DrinkManager.Instance.HideDrinkPlayer();
+
+        //Debug
+        //Debug.LogError("goi Order tu GUIEffect");
         Order();
-        
     }
     //Show Order ra
     //Khay chay vao
@@ -115,7 +117,7 @@ public class GUIEffect : MonoSingleton<GUIEffect>
         HOTween.To(order.transf, 0.7f, new TweenParms()
            .Prop("localPosition", order.posOut, false)
            .Ease(EaseType.EaseInOutCubic)
-           .OnComplete(() => Reset())
+           //.OnComplete(() => Reset())
            );
 
         InfoDotween tray = GetInItem(InfoDotween.TYPE.TRAY);
@@ -407,6 +409,10 @@ public class GUIEffect : MonoSingleton<GUIEffect>
     //tra ve gia tri da Order xong, cho nguoi choi thuc hien choi
     public bool OnCompleteOrder()
     {
+        //test too
+
+        //TestTool.Instance.TestEnum();
+
         return false;
     }
 
@@ -417,6 +423,7 @@ public class GUIEffect : MonoSingleton<GUIEffect>
         //ShowDishFruit();
         //FruitManager.Instance.RandomFruit();
         //DrinkManager.Instance.RandomDrink();
+
         return true;
     }
 
